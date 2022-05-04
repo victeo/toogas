@@ -1,0 +1,24 @@
+bin/magento setup:install \
+--base-url=http://dev.victor \
+--db-host=localhost \
+--db-name=devictor \
+--db-user=root \
+--db-password=toogas123 \
+--admin-firstname=victor \
+--admin-lastname=Souza \
+--admin-email=victor.souza@toogas.com \
+--admin-user=admin \
+--admin-password=admin123 \
+--language=en_US \
+--currency=EUR \
+--timezone=Europe/Lisbon \
+--use-rewrites=1 \
+--search-engine=elasticsearch7 \
+--elasticsearch-host=localhost \
+--elasticsearch-port=9200 \
+--elasticsearch-index-prefix=victor \
+--elasticsearch-timeout=15
+
+
+[SUCCESS]: Magento Admin URI: /admin_m48ori
+[SUCCESS]: Magento Admin URI: /admin_1o9nnj
