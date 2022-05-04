@@ -1,1 +1,67 @@
-## 04-05
+# Magento e-commerce
+
+## 1º Startar o elasticsearch
+- evm start
+
+## 2º Criar uma nova aplicação magento via composer
+- Configure o apache
+##Configurar novo projeto no Apache2
+cd /etc/apache2/sites-available/
+sudo cp dev.magento.conf dev.exemplo.conf
+sudo vim dev.exemplo.conf
+   Dentro do ficheiro dev.exemplo.conf editar o "ServerName | ServerAlias | DocumentRoot | ProxyPass"
+      Exemplo de conteudo:
+      <VirtualHost *:80>
+         ServerName dev.exemplo
+         ServerAlias dev.exemplo
+         DocumentRoot /var/www/html/exemplo/pub
+         ErrorLog ${APACHE_LOG_DIR}/error.log
+         CustomLog ${APACHE_LOG_DIR}/access.log combined
+         <Directory /var/www/html>
+            Options Indexes FollowSymLinks MultiViews
+            AllowOverride All
+            Require all granted
+         </Directory>
+         <LocationMatch "^/(.*\.php(/.*)?)$">
+            ProxyPass fcgi://127.0.0.1:9000/var/www/html/exemplo/pub/$1
+         </LocationMatch>
+      </VirtualHost>
+   # sair do ficheiro -> :wq
+sudo a2ensite dev.exemplo.conf
+sudo service apache2 restart
+## Editar /etc/hosts
+sudo vim /etc/hosts
+   Dentro do ficheiro adicionar:
+      127.0.0.1   dev.exemplo
+   #sair do ficheiro -> :wq
+# Ultimo passo, avançar com o Setup Install do Magento dentro da pasta do projeto | algo como -> /var/www/html/exemplo
+
+# Alterar a key
+
+```
+Abrir o ficheiro /home/toogas/.config/composer 
+
+vim Auth.json
+```
+No ficheiro Auth.json alterar **Username** que corresponde a ***PublicKey** e a **Password** que corresponde a **PrivatKey** 
+
+
+### >Vá a página do projeto e xecute o comando: 
+```
+composer create-project --repository-url=https://repo.magento.com/ magento/project-enterprise-edition
+```
+
+### Mover os arquivos
+
+```
+mv project-enterprise-edition/* .
+mv project-enterprise-edition/.* .
+
+rm -rf project-enterprise-edition/
+```
+### Crie uma nova base de dados
+
+### Setup install magento
+
+
+
