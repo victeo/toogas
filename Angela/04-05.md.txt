@@ -63,5 +63,12 @@ rm -rf project-enterprise-edition/
 
 ### Setup install magento
 
+### Disable TwoFactorAuth
+```
+php bin/magento module:status
+php bin/magento module:status | grep Two
+php bin/magento module:disable Magento_TwoFactorAuth
+```
+
 
 
